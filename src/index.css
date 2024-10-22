@@ -1,0 +1,10 @@
+:root {
+  --accent-color-red: #E90A1E; /* Define the color variable */
+  --secondary-color: #2ecc71; /* Define another color variable */
+}
+
+
+body{
+  font-family: 'Toyota Type', sans-serif;
+  background: #FCFCFC;
+}

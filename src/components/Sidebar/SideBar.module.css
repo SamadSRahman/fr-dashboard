@@ -1,0 +1,51 @@
+.container{
+   
+    width: 15rem;
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    height: 90vh;
+    background-color: white;
+    border: 0.5px solid #E6E6E6;
+    box-shadow: 2px 2px 12px 0px rgba(191, 191, 191, 0.20);
+    border-radius: 10px;
+}
+.logoContainer{
+    display: flex;
+    border-bottom: 0.5px solid #CCC;
+
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 7px;
+    justify-content: center;
+}
+.logoContainer img{
+    width: 2rem;
+}
+.logoContainer span{
+    color: var(--accent-color-red);
+    margin-left: -2px;
+
+}
+.menuSection{
+    padding: 18px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.menuIcon, .menuItem{   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    color: #292929;
+    letter-spacing: 0.2px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+}
+.menuIcon img{
+    width: 5rem;
+}
