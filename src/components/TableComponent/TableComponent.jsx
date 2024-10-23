@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import styles from "./TableComponent.module.css";
+import arrowLeft from '../../assets/arrowLeft.svg'
+import arrowRight from '../../assets/arrowRight.svg'
 
 const TableComponent = ({ headerData, tableData, currentPage, onPageChange, totalPages }) => {
   return (
@@ -30,26 +32,21 @@ const TableComponent = ({ headerData, tableData, currentPage, onPageChange, tota
         ))}
       </tbody>
       <tfoot>
-      <tr>
+      <tr >
           <td colSpan={headerData.length} className={styles.paginationRow}>
-            {/* Pagination controls */}
-            <button
-              disabled={currentPage === 1}
-              onClick={() => onPageChange(currentPage - 1)}
-              className={styles.paginationButton}
-            >
-              Previous
-            </button>
-            <span className={styles.pageInfo}>
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              disabled={currentPage === totalPages}
-              onClick={() => onPageChange(currentPage + 1)}
-              className={styles.paginationButton}
-            >
-              Next
-            </button>
+          <div className={styles.paginationContainer}>
+          <div className={styles.tableDataIndicator}>
+            {tableData.length}/{totalPages}
+            </div>
+            <div className={styles.pageIndicator}>
+               <button onClick={()=>onPageChange(currentPage+1)}> <img src={arrowLeft} alt="" /></button>
+               <div className={styles.pageSection}>
+               <span>{currentPage}</span>
+               of {totalPages}
+               </div>
+               <button onClick={()=>onPageChange(currentPage+1)}> <img src={arrowRight} alt="" /></button>
+            </div>
+          </div>
           </td>
         </tr>
       </tfoot>

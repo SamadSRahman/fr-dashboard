@@ -60,14 +60,51 @@ box-shadow: 2px 2px 12px 0px rgba(184, 184, 184, 0.20);
 
   /* Pagination */
 
+  .paginationContainer {
+    display: flex;
+    justify-content: space-between; /* Ensure space between data indicator and page indicator */
+    align-items: center;
+    width: 100%;
+    /* padding: 10px; */
+  }
+  
   .paginationRow {
-    background-color: #f9f9f9;
-    text-align: center;
-    padding: 10px;
+    border-top: 1px solid #ccc;
+    padding: 10px, 15px;
+    background-color: white;
+  }
+  
+  .tableDataIndicator {
+    font-weight: bold;
+  }
+  
+  .pageIndicator {
+    display: flex;
+    align-items: center; /* Align buttons and text in the center */
+  }
+  
+  .pageIndicator button {
+    border-radius: 8px;
+    border: 0.604px solid #DADADA;
+    background: #FFF;
+    cursor: pointer;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pageIndicator img {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .pageIndicator span {
+    margin: 0 5px 0 0px;
+    font-weight: bold;
   }
   
   .paginationButton {
-    margin: 0 10px;
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -80,9 +117,10 @@ box-shadow: 2px 2px 12px 0px rgba(184, 184, 184, 0.20);
     background-color: #ccc;
     cursor: not-allowed;
   }
-  
-  .pageInfo {
-    margin: 0 15px;
-    font-weight: bold;
+  .pageSection{
+ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
   }
-  
