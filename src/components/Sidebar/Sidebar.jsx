@@ -1,4 +1,4 @@
-import styles from "./Sidebar.module.css";
+import styles from "./SideBar.module.css";
 import icon from "../../assets/logoIcon.svg";
 import menu from "../../assets/menu.svg";
 import { routes } from "../../utils/data";
