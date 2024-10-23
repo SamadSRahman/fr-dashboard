@@ -1,10 +1,32 @@
 :root {
-  --accent-color-red: #E90A1E; /* Define the color variable */
+  --accent-color-red: #e90a1e; /* Define the color variable */
   --secondary-color: #2ecc71; /* Define another color variable */
 }
-
-
 body{
-  font-family: 'Toyota Type', sans-serif;
-  background: #FCFCFC;
+  margin: 0px;
+}
+.main-container {
+  font-family: "Toyota Type", sans-serif;
+  background: #fcfcfc;
+  padding-top: 4rem;
+  padding-left: 14rem;
+  height: 100vh;
+  box-sizing: border-box;
+}
+/* .MuiTableCell-root, .MuiTableCell-head MuiTableCell-sizeMedium css-1orzuox-MuiTableCell-root */
+
+.MuiTableCell-head{
+  color: white !important;
+  font-size: 11px !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.251);
+  max-width: 7rem;
+  font-weight: 500 !important;
+  /* text-wrap: wrap !important; */
+  
+}
+.css-14y13q2-MuiTableCell-root{
+  font-size: 11px !important;
+}
+.css-y2ff7i-MuiPaper-root-MuiTableContainer-root {
+border-radius: 9px !important;
 }

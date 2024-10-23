@@ -1,0 +1,40 @@
+.container{
+    width: 10rem;
+    
+    position: fixed;
+    top: 1.6rem;
+    right: 2.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+
+}
+.iconContainer{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+background: #FFF;
+box-shadow: 2px 2px 12px 0px rgba(184, 184, 184, 0.20);
+/* border: 1px solid; */
+padding: 2px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-sizing: border-box;
+}
+.iconContainer img{
+    width: 25px;
+}
+.adminSection{    cursor: pointer;
+gap: 7px;
+   
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+.adminSection img{
+    margin-bottom: 2px;
+    width: 8px;
+}

@@ -1,0 +1,29 @@
+.container{
+    padding: 5px;
+    max-width: min-content;
+}
+
+.container h3, .cardSection h3{
+    display: inline;
+    font-size: 1.1rem;
+    font-weight: 750;
+    margin: 0px;
+}
+.selectSection{
+    border: 1px solid;
+    margin-top: 10px;
+    height: 4rem;
+}
+.cardSection, .tableSection{
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 2.1rem;
+}
+
+.cards{
+    /* border: 1px solid; */
+    display: flex;
+    gap: 16px;
+}
