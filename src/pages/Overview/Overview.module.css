@@ -10,9 +10,13 @@
     margin: 0px;
 }
 .selectSection{
-    border: 1px solid;
+    /* border: 1px solid; */
     margin-top: 10px;
     height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 .cardSection, .tableSection{
     margin-top: 1.75rem;
