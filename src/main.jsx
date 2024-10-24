@@ -8,15 +8,20 @@ import Header from "./components/Header/Header.jsx";
 import 'rsuite/dist/rsuite.min.css';  // or 'rsuite/styles/index.less';
 import { CustomProvider } from 'rsuite';
 
+const isLoggedin = localStorage.getItem("isLoggedin");
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
   <CustomProvider >
     <BrowserRouter>
-    <div className="main-container">
-    <Sidebar/>
-      <Header />
-      <App />
-    </div>
+    {isLoggedin ? <div className="main-container">
+      <Sidebar/>
+        <Header />
+        <App />
+      </div>
+      :
+        <App/>
+      } 
     </BrowserRouter>
     </CustomProvider>
   </StrictMode>

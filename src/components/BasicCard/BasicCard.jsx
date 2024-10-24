@@ -4,11 +4,11 @@ import newsIcon from '../../assets/news.svg';
 import { colors } from '../../utils/data';
 
 
-export default function BasicCard({text, value, index}) {
+export default function BasicCard({ text, value, index}) {
   return (
     <div className={styles.container}>
       <div style={index!==undefined?{backgroundColor: colors[index]}:{}} className={styles.iconWrapper}>
-      <img src={newsIcon} alt="newsIcon" />
+        <img src={newsIcon} alt="newsIcon" />
       </div>
         <div className={styles.textSection}>
             <span>{text}</span>

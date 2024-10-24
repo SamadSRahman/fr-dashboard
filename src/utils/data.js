@@ -22,7 +22,7 @@ export const routes = [
   }
 ];
 
-export const colors = ["#FF7575", "#C3BC00","#00CF50","#347BFF","#DD34FF"];
+export const colors = ["#FF7575", "#C3BC00","#00CF50","#347BFF","#DD34FF","#FF7575", "#C3BC00","#00CF50","#347BFF","#DD34FF"];
 
 export const overviewPageCards = [
   {

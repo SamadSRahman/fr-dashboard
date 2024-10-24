@@ -14,6 +14,16 @@ export const apiClientWithFormData = axios.create({
     'Content-Type': 'multipart/form-data',
   },
 });
+
+
+export const apiClientlogin = axios.create({
+  baseURL: "https://toyota-lakshya-onlineassessment.in/dashboard_api/dashboard_login/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+
 export const apiClientWithToken = axios.create({
   baseURL: "http://139.5.190.56:17909",
   headers: {
