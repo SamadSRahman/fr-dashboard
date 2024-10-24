@@ -1,83 +1,72 @@
 import BasicCard from "../../components/BasicCard/BasicCard";
 import TableComponent from "../../components/TableComponent/TableComponent";
-
-import { overviewPageCards, overviewTableRows } from "../../utils/data";
 import styles from "./Overview.module.css";
-import SelectComponent from "../../components/SelectComponent/Select";
-import { useEffect } from "react";
-import useRegions from "../../hooks/useRegions";
-import useDealers from "../../hooks/useDealers";
+import SelectSection from "../../components/SelectSection/SelectSection";
+
+import useOverview from "../../hooks/useOverview";
 
 export default function Overview() {
-  const { handleGetRegions, regions } = useRegions();
-  const {handleGetDealers} = useDealers()
-  useEffect(() => {
-    handleGetRegions();
-    handleGetDealers();
-  }, []);
+  const {handleGetOverviewData, assessmentSummary, statistics} = useOverview()
+
+  function handleApply(selectedDealerCode, dealerData,selectedDepartments, dates){
+    const filteredArr = dealerData.filter((ele) =>
+      selectedDealerCode.includes(`${ele.dealer_name} - ${ele.dealer_code}`)
+    );
+    const selectedDealerCodes = filteredArr.map((ele) => ele.dealer_code);
+    console.log(selectedDealerCodes);
+    handleGetOverviewData(selectedDealerCodes, selectedDepartments, dates)
+  }
   return (
     <div className={styles.container}>
       <h3>Overview</h3>
-      <div className={styles.selectSection}>
-        <SelectComponent
-          label="Region"
-          defaultValue={"All"}
-          data={[1, 2, 3, 4, 5]}
-          setData={() => console.log("setData")}
-          listData={regions}
-        />
-        <SelectComponent
-          label="Group code"
-          defaultValue={"All"}
-          data={[1, 2, 3, 4, 5]}
-          setData={() => console.log("setData")}
-          listData={[1, 2, 3, 4, 5]}
-        />
-        <SelectComponent
-          label="Dealer Code"
-          defaultValue={"All"}
-          data={[1, 2, 3, 4, 5]}
-          setData={() => console.log("setData")}
-          listData={[1, 2, 3, 4, 5]}
-        />
-        <SelectComponent
-          label="Department"
-          defaultValue={"Sales"}
-          data={[1, 2, 3, 4, 5]}
-          setData={() => console.log("setData")}
-          listData={[1, 2, 3, 4, 5]}
-        />
-        <SelectComponent
-          label="Assessment"
-          defaultValue={"Sales knowledge"}
-          data={[1, 2, 3, 4, 5]}
-          setData={() => console.log("setData")}
-          listData={[1, 2, 3, 4, 5]}
-        />
-      </div>
+      <SelectSection page={'overview'} onApply={(selectedDealersCode, dealerData,selectedDepartments, dates )=>handleApply(selectedDealersCode, dealerData, selectedDepartments, dates)} />
       <div className={styles.cardSection}>
-        <h3>Overview</h3>
+        <h3>Summary</h3>
         <div className={styles.cards}>
-          {overviewPageCards.map((card, ind) => (
-            <BasicCard
-              key={ind}
-              text={card.text}
-              value={card.value}
-              index={ind}
-            />
-          ))}
+          <BasicCard 
+          text="Total Number of Assessments Conducted"
+          value={statistics.total_assessments}
+          index={0}
+          />
+          <BasicCard 
+          text="Current active assessments"
+          value={statistics.active_assessments}
+          index={1}
+          />
+          <BasicCard 
+          text="Average score rate across all assessments"
+          value={statistics.average_score}
+          index={2}
+          />
+          <BasicCard 
+          text="Overall pass rate"
+          value={statistics.pass_rate}
+          index={3}
+          />
+          <BasicCard 
+          text="Average Attempts per Assessment"
+          value={statistics.average_attempts}
+          index={0}
+          />
         </div>
       </div>
       <div className={styles.tableSection}>
         <h3>Recent Assessments Summary</h3>
         <TableComponent
-          tableData={overviewTableRows}
+          tableData={assessmentSummary}
+          columns={[
+            { key: 'assessment_name' },
+            { key: 'date' },
+            { key: 'total_participants' },
+            { key: 'pass_rate' },
+            { key: 'average_attempt' }
+          ]}
           headerData={[
             "Assessment name",
             "Date",
             "Participants",
             "Pass rate",
-            "Average time spent on the assessment",
+            "Average attempt",
           ]}
           currentPage={1}
           totalPages={10}

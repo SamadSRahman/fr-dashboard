@@ -3,7 +3,14 @@ import styles from "./TableComponent.module.css";
 import arrowLeft from '../../assets/arrowLeft.svg'
 import arrowRight from '../../assets/arrowRight.svg'
 
-const TableComponent = ({ headerData, tableData, currentPage, onPageChange, totalPages }) => {
+const TableComponent = ({ 
+  headerData, 
+  tableData, 
+  columns, // New prop to define column configuration
+  currentPage, 
+  onPageChange, 
+  totalPages 
+}) => {
   return (
     <table className={styles.table}>
       <thead>
@@ -19,34 +26,36 @@ const TableComponent = ({ headerData, tableData, currentPage, onPageChange, tota
         {tableData.map((row, rowIndex) => (
           <tr
             className={rowIndex % 2 === 0 ? styles.evenRow : styles.oddRow}
-            key={row.name}
+            key={rowIndex}
           >
-            <td scope="row" align="center">
-              {row.name}
-            </td>
-            <td align="center">{row.date}</td>
-            <td align="center">{row.participants}</td>
-            <td align="center">{row.rate}</td>
-            <td align="center">{row.time}</td>
+            {columns.map((column) => (
+              <td key={column.key} align="center">
+                {column.render ? column.render(row[column.key], row) : row[column.key]}
+              </td>
+            ))}
           </tr>
         ))}
       </tbody>
       <tfoot>
-      <tr >
+        <tr>
           <td colSpan={headerData.length} className={styles.paginationRow}>
-          <div className={styles.paginationContainer}>
-          <div className={styles.tableDataIndicator}>
-            {tableData.length}/{totalPages}
+            <div className={styles.paginationContainer}>
+              <div className={styles.tableDataIndicator}>
+                {tableData.length}/{totalPages}
+              </div>
+              <div className={styles.pageIndicator}>
+                <button onClick={() => onPageChange(currentPage - 1)}>
+                  <img src={arrowLeft} alt="" />
+                </button>
+                <div className={styles.pageSection}>
+                  <span>{currentPage}</span>
+                  of {totalPages}
+                </div>
+                <button onClick={() => onPageChange(currentPage + 1)}>
+                  <img src={arrowRight} alt="" />
+                </button>
+              </div>
             </div>
-            <div className={styles.pageIndicator}>
-               <button onClick={()=>onPageChange(currentPage+1)}> <img src={arrowLeft} alt="" /></button>
-               <div className={styles.pageSection}>
-               <span>{currentPage}</span>
-               of {totalPages}
-               </div>
-               <button onClick={()=>onPageChange(currentPage+1)}> <img src={arrowRight} alt="" /></button>
-            </div>
-          </div>
           </td>
         </tr>
       </tfoot>
@@ -54,12 +63,16 @@ const TableComponent = ({ headerData, tableData, currentPage, onPageChange, tota
   );
 };
 
-export default TableComponent;
-
 TableComponent.propTypes = {
   headerData: PropTypes.array.isRequired,
   tableData: PropTypes.array.isRequired,
+  columns: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string.isRequired,
+    render: PropTypes.func
+  })).isRequired,
   currentPage: PropTypes.number,
   totalPages: PropTypes.number,
   onPageChange: PropTypes.func
 };
+
+export default TableComponent;
