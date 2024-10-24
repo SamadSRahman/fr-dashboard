@@ -33,10 +33,11 @@
     border: 0.604px solid #e6e6e664;
     background: #FFF;
     box-shadow: 2px 2px 12px 0px rgba(191, 191, 191, 0.3);
-    padding: 8px 12px;
+    padding: 10px 12px;
 box-sizing: border-box;
+
 }
-.selectBox  label{
+.selectBox label{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -58,10 +59,10 @@ box-sizing: border-box;
     position: absolute;
     top: 4.3rem;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.178);
-    padding: 10px 10px;
+    padding: 10px 0px;
     transition: max-height 0.3s linear, padding 0.3s linear;
     min-width: 12rem;
-    overflow-y: hidden;
+    overflow-y: scroll;
     /* max-height: 50vh; */
 
 }
@@ -83,22 +84,25 @@ box-sizing: border-box;
 }
 .menuItem {
    cursor: pointer;
-   border-radius: 5px;
-padding:10px 15px;
+padding: 5px 15px;
 color: #617068;
 font-size: 13px;
 display: flex;
 align-items: center;
 justify-content: flex-start;
 gap: 10px;
-/* margin: 5px; */
-transition: padding 0.3s linear;
 
 }
-.menuItem > input[type="checkbox"] {
-    accent-color: #ED3B4B; /* Set your desired color */
-  }
 .menuItem:hover{
-    background-color: #FDE8EA;
+    background-color: #F7F7F7;
     color: black;
+}
+
+.autoCompleteInput{
+    outline: none;
+    margin: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.217);
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 5px;
 }

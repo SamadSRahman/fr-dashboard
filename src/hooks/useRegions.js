@@ -20,7 +20,7 @@ export default function useRegions() {
       const allZones = response.flatMap((regionObj) => Object.values(regionObj)[0]);
       setZones(allZones);
 
-      setRegions(regionNames);
+      setRegions(response);
       console.log(regionNames, allZones);
       
     } catch (err) {

@@ -6,28 +6,41 @@ import PropTypes from "prop-types";
 export default function SelectComponent({
   listData,
   defaultValue,
-  data,
   label,
   onClose,
-  onSelect,
   setData,
 }) {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(defaultValue);
-  const [expanded, setExpanded] = useState(false);
+  const [selectedValues, setSelectedValues] = useState([]);
+
   const containerRef = useRef(null);
   const contentRef = useRef(null);
+
+  // Function to handle individual menu item clicks
   function handleMenuItemClick(ele) {
-    if (ele === "All organizations") {
-      setSelectedValue("All organizations");
-      setData("");
+    console.log("clicked");
+
+    if (ele === defaultValue) {
+      if (selectedValues.length === listData.length) {
+        // Deselect all if all are selected
+        setSelectedValues([]);
+        setData([]);
+      } else {
+        // Select all if not all are selected
+        setSelectedValues(listData);
+        setData(listData);
+      }
     } else {
-      setSelectedValue(ele);
-      setData(ele);
+      const isAlreadySelected = selectedValues.includes(ele);
+      const updatedSelectedValues = isAlreadySelected
+        ? selectedValues.filter((item) => item !== ele) // Deselect
+        : [...selectedValues, ele]; // Select
+      setSelectedValues(updatedSelectedValues);
+      setData(updatedSelectedValues);
     }
-    setIsDropDownVisible(false);
+    // setIsDropDownVisible(false);
   }
-  // useEffect(()=>{setName(selectedValue)},[selectedValue])
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -46,9 +59,11 @@ export default function SelectComponent({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [containerRef, onClose]);
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
+
+  useEffect(() => {
+    setData(listData);
+    setSelectedValues(listData);
+  }, [listData]);
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -57,7 +72,12 @@ export default function SelectComponent({
         className={styles.selectBox}
         onClick={() => setIsDropDownVisible(!isDropDownVisible)}
       >
-        <label>{selectedValue}</label>
+        <label>
+          {selectedValues.length > 0 &&
+          selectedValues.length !== listData.length
+            ? selectedValues.join(", ")
+            : defaultValue}
+        </label>
         <img
           style={isDropDownVisible ? { transform: "rotate(180deg)" } : {}}
           src={arrowDown}
@@ -70,36 +90,63 @@ export default function SelectComponent({
         ref={contentRef}
         style={
           isDropDownVisible
-            ? { maxHeight: `${contentRef.current.scrollHeight}px` }
+            ? {
+                maxHeight: `${
+                  contentRef.current.scrollHeight + listData.length * 25 >
+                  window.innerHeight * 0.5
+                    ? "50vh"
+                    : `${
+                        contentRef.current.scrollHeight + listData.length * 30
+                      }px`
+                }`,
+                overflowY:
+                  contentRef.current.scrollHeight > window.innerHeight * 0.5
+                    ? "auto"
+                    : "visible",
+              }
             : { maxHeight: "0px", padding: "0px" }
         }
-        // style={{ maxHeight: isDropDownVisible ? `${contentRef.current.scrollHeight}px` : '0' }}
       >
         <div className={styles.menu}>
           <label
+            className={styles.menuItem}
             style={
-              selectedValue === defaultValue
-                ? { color: "black", backgroundColor: "#F7F7F7" }
+              selectedValues.length === listData.length
+                ? {
+                    color: "#ED3B4B",
+                    backgroundColor: "#FDE8EA",
+                    padding: isDropDownVisible ? "10px 15px" : "0px",
+                  }
                 : {}
             }
-            onClick={() => handleMenuItemClick(defaultValue)}
-            className={styles.menuItem}
           >
+            <input
+              type="checkbox"
+              checked={selectedValues.length === listData.length}
+              onChange={() => handleMenuItemClick(defaultValue)}
+            />
             {defaultValue}
           </label>
-
           {listData?.map((ele) => (
             <label
+              key={ele}
+              className={styles.menuItem}
               style={
-                selectedValue === ele
-                  ? { color: "black", backgroundColor: "#F7F7F7" }
+                // isDropDownVisible?{padding:'10px 15px', color:selectedValues.includes(ele)?'':}:{}
+                selectedValues.includes(ele)
+                  ? {
+                      color: "#ED3B4B",
+                      backgroundColor: "#FDE8EA",
+                      padding: isDropDownVisible ? "10px 15px" : "0px",
+                    }
                   : {}
               }
-              key={ele}
-              //   style={selectedValue}
-              className={styles.menuItem}
-              onClick={() => handleMenuItemClick(ele)}
             >
+              <input
+                type="checkbox"
+                checked={selectedValues.includes(ele)}
+                onChange={() => handleMenuItemClick(ele)}
+              />
               {ele}
             </label>
           ))}
@@ -110,11 +157,11 @@ export default function SelectComponent({
 }
 
 SelectComponent.propTypes = {
-  listData: PropTypes.array,
-  defaultValue: PropTypes.any,
+  listData: PropTypes.array.isRequired,
+  defaultValue: PropTypes.any.isRequired,
   data: PropTypes.any,
   label: PropTypes.string.isRequired,
   onClose: PropTypes.func,
-  setData: PropTypes.func,
+  setData: PropTypes.func.isRequired,
   onSelect: PropTypes.func,
 };

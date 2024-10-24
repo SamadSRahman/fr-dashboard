@@ -30,7 +30,7 @@
   flex-direction: column;
 line-height: 15px;
   height: 3.5rem;
-  gap: 6px;
+  gap: 10px;
   letter-spacing: 0.5px;
   max-width:7.6rem;
   justify-content: center;
@@ -46,4 +46,6 @@ line-height: 15px;
   margin: 0px;
   letter-spacing: -0.4px;
   font-weight: 800;
+  font-size: 15px;
+  line-height: 10px;
 }
