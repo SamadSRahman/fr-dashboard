@@ -64,6 +64,7 @@ box-sizing: border-box;
     min-width: 12rem;
     overflow-y: scroll;
     /* max-height: 50vh; */
+    z-index: 3;
 
 }
 .dropDownContainer::-webkit-scrollbar{

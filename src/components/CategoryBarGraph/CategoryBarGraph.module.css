@@ -9,7 +9,7 @@
 }
 .header h3{
     display: inline;
-    font-size: 0.9rem;
+    font-size: 0.9rem !important;
     font-weight: 750;
 }
 .header{
@@ -17,25 +17,4 @@
     padding: 8px 10px;
     border-bottom: 1px solid #E6E6E6;
     
-}
-.legendsSection{
-    display: flex;
-    padding: 10px 25px;
-    gap: 20px;
-}
-.indicatorSection{
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-.legendIndicator{
-    width: 10px;
-    height: 10px;
-
-    border-radius: 50%;
-}
-.legend{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
 }

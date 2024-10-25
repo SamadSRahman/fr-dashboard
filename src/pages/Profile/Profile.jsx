@@ -92,6 +92,7 @@ export default function Profile() {
             <ReportCard/>
           </div>
           <div className={styles.chartWrapper}>
+            <h3>Department wise profile update</h3>
             <ProfileGraph chartData={portalWiseStats} />
           </div>
         </div>

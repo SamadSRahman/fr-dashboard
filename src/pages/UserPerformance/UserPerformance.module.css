@@ -1,0 +1,11 @@
+.container{
+
+    padding: 5px;
+}
+
+.container h3{
+    display: inline;
+    font-size: 1.1rem;
+    font-weight: 750;
+
+}

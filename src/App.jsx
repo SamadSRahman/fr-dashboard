@@ -8,6 +8,7 @@ import QuestionAnalytics from './pages/QuestionAnalytics/QuestionAnalytics'
 import CategoryWiseReport from './pages/CategoryWiseReport/CategoryWiseReport'
 import Login from './pages/Login/Login';
 import ResetPassword from './pages/ResetPassword/ResetPassword'
+import UserPerformance from './pages/UserPerformance/UserPerformance'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
       <Route element={<DealerPerformance />} path='/dealerPerformance'/>
       <Route element={<QuestionAnalytics />} path='/questionAnalytics'/>
       <Route element={<CategoryWiseReport />} path='/categoryWiseReport'/>
+      <Route element={<UserPerformance />} path='/userPerformance'/>
     </Routes>
     </>
   )

@@ -19,6 +19,10 @@ export const routes = [
   {
     name: "Category wise report",
     route: "/categoryWiseReport",
+  },
+  {
+    name: "User performance",
+    route: "/userPerformance",
   }
 ];
 

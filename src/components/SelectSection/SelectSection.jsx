@@ -10,7 +10,6 @@ import useAssessments from "../../hooks/useAssessments";
 import AutocompleteComponent from "../Autocomplete/Autocomplete";
 import DateInputFeild from "../DateInput/DateInputFeild";
 import { useLocation } from "react-router-dom";
-import BasicSelect from "../SelectComponent/BasicSelect";
 import BasicAutocompleteComponent from "../Autocomplete/BasicAutocomplete";
 
 function SelectSection({
@@ -76,7 +75,7 @@ function SelectSection({
     if (page === "overview") {
       onApply(selectedDealerCode, dealerData, selectedDepartments, dates);
     } 
-    else if (page === "assessmentAnalytics") {
+    else if (page === "assessmentAnalytics" || page === "categoryWiseReport") {
       console.log("line 82", assessmentData, selectedAssessments);
       let selectedAssessmentsData = assessmentData.find(
         (ele) => selectedAssessments === ele.assessment_name

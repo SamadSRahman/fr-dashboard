@@ -1,11 +1,27 @@
 .container{
-    border: 1px solid;
+    
     padding: 5px;
 }
 
-.container h3{
+.container> h3{
     display: inline;
     font-size: 1.1rem;
     font-weight: 750;
 
+}
+.graphSection{
+    width: 98%;
+    margin-top: 20px;
+}
+.graphSection h3, .tableWrapper h3 {
+    font-size: 1rem;
+}
+.tableSection{
+    display: flex;
+    width: 98%;
+    margin: 20px 0px;
+    gap: 2rem;
+}
+.tableWrapper{
+    width: 100%;
 }
