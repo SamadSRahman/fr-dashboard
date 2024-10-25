@@ -1,3 +1,4 @@
+import ReportCard from '../../components/ReportCard/ReportCard';
 import SelectSection from '../../components/SelectSection/SelectSection';
 import TableComponent from '../../components/TableComponent/TableComponent';
 import useDealerPerformance from '../../hooks/useDealerPerformance';
@@ -54,6 +55,8 @@ export default function DealerPerformance() {
           assessmentIds)
       }
     />
+
+    <ReportCard />
 
    <div className={styles.tablecontainer}>
 

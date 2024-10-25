@@ -16,7 +16,7 @@ function App() {
   return (
     <>
     <Routes>
-      <Route element={<Login />} path='/login'/>
+      <Route element={<Login />} exact path='/' />
       <Route element={<ResetPassword />} path='/resetPassword'/>
       <Route element={<Overview />} path='/overview'/>
       <Route element={<Profile />} path='/profile'/>
