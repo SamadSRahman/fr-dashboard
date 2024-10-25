@@ -1,0 +1,41 @@
+.container{
+    border: 1px solid;
+    min-width: 25rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px 0px rgba(184, 184, 184, 0.2);
+    border: 1px solid #e6e6e67e;
+}
+.header h3{
+    display: inline;
+    font-size: 0.9rem;
+    font-weight: 750;
+}
+.header{
+    /* border: 1px solid; */
+    padding: 8px 10px;
+    border-bottom: 1px solid #E6E6E6;
+    ;
+}
+.legendsSection{
+    display: flex;
+    padding: 10px 25px;
+    gap: 20px;
+}
+.indicatorSection{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.legendIndicator{
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+}
+.legend{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

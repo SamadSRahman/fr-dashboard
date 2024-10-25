@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -11,7 +10,7 @@ import { CustomProvider } from 'rsuite';
 const isLoggedin = localStorage.getItem("isLoggedin");
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
+ 
   <CustomProvider >
     <BrowserRouter>
     {isLoggedin ? <div className="main-container">
@@ -24,5 +23,5 @@ createRoot(document.getElementById("root")).render(
       } 
     </BrowserRouter>
     </CustomProvider>
-  </StrictMode>
+
 );

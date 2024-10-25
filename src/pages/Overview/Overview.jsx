@@ -13,13 +13,14 @@ export default function Overview() {
       selectedDealerCode.includes(`${ele.dealer_name} - ${ele.dealer_code}`)
     );
     const selectedDealerCodes = filteredArr.map((ele) => ele.dealer_code);
-    console.log(selectedDealerCodes);
     handleGetOverviewData(selectedDealerCodes, selectedDepartments, dates)
   }
   return (
     <div className={styles.container}>
       <h3>Overview</h3>
-      <SelectSection page={'overview'} onApply={(selectedDealersCode, dealerData,selectedDepartments, dates )=>handleApply(selectedDealersCode, dealerData, selectedDepartments, dates)} />
+      <SelectSection
+      isRegion isGroupCode isDealerCode isDepartment isDate
+      page={'overview'} onApply={(selectedDealersCode, dealerData,selectedDepartments, dates )=>handleApply(selectedDealersCode, dealerData, selectedDepartments, dates)} />
       <div className={styles.cardSection}>
         <h3>Summary</h3>
         <div className={styles.cards}>

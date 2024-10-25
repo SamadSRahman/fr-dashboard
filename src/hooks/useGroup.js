@@ -12,7 +12,6 @@ export default function useGroup() {
     setLoading(true);
     try {
       const response = await getAllGroups(selectedRegions);
-      console.log(response);
       setGroups(response);     
     } catch (err) {
       console.log(err);

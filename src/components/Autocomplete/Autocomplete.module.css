@@ -33,7 +33,7 @@
     border: 0.604px solid #e6e6e664;
     background: #FFF;
     box-shadow: 2px 2px 12px 0px rgba(191, 191, 191, 0.3);
-    padding: 10px 12px;
+    padding: 8px 12px;
 box-sizing: border-box;
 
 }
@@ -59,8 +59,8 @@ box-sizing: border-box;
     position: absolute;
     top: 4.3rem;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.178);
-    padding: 10px 0px;
-    transition: max-height 0.3s linear, padding 0.3s linear;
+    padding: 10px 10px;
+    transition: all 0.3s linear, padding 0.3s linear;
     min-width: 12rem;
     overflow-y: scroll;
     /* max-height: 50vh; */
@@ -84,19 +84,24 @@ box-sizing: border-box;
 }
 .menuItem {
    cursor: pointer;
-padding: 5px 15px;
+padding: 10px 15px;
 color: #617068;
 font-size: 13px;
 display: flex;
 align-items: center;
 justify-content: flex-start;
 gap: 10px;
+border-radius: 5px;
 
 }
 .menuItem:hover{
     background-color: #F7F7F7;
     color: black;
 }
+.menuItem > input[type="checkbox"] {
+    accent-color: #ED3B4B; /* Set your desired color */
+  }
+
 
 .autoCompleteInput{
     outline: none;
@@ -105,4 +110,5 @@ gap: 10px;
     border-radius: 8px;
     font-size: 14px;
     padding: 5px;
+    margin-bottom: 10px;
 }

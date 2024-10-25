@@ -12,7 +12,6 @@ export default function useDealers() {
     setLoading(true);
     try {
       const response = await getAllDealers(regions,groups);
-      console.log(response);
       setDealerData(response);
       setDealerCodes(response.map(ele=>ele.dealer_code))
       setDealerList(response.map(ele=>ele.dealer_name.concat(" - "+ ele.dealer_code)))

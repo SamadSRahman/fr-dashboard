@@ -11,7 +11,6 @@ export default function useAssessments() {
     setLoading(true);
     try {
       const response = await getAllAssesments();
-      console.log(response);
       setAssessmentData(response)
       setAssessments(response.map(ele=>ele.assessment_name));     
     } catch (err) {

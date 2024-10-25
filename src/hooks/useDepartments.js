@@ -11,7 +11,6 @@ export default function useDepartments() {
     setLoading(true);
     try {
       const response = await getAllDepartments();
-      console.log(response);
       setDepartments(response);     
     } catch (err) {
       console.log(err);

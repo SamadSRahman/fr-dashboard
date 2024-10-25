@@ -3,7 +3,7 @@ import styles from "./select.module.css";
 import arrowDown from "../../assets/arrow_drop_down.svg";
 import PropTypes from "prop-types";
 
-export default function SelectComponent({
+export default function BasicSelect({
   listData,
   defaultValue,
   label,
@@ -11,34 +11,17 @@ export default function SelectComponent({
   setData,
 }) {
   const [isDropDownVisible, setIsDropDownVisible] = useState(false);
-  const [selectedValues, setSelectedValues] = useState([]);
+  const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   const containerRef = useRef(null);
   const contentRef = useRef(null);
 
-  // Function to handle individual menu item clicks
+  // Function to handle single item selection
   function handleMenuItemClick(ele) {
-    console.log("clicked");
-
-    if (ele === defaultValue) {
-      if (selectedValues.length === listData.length) {
-        // Deselect all if all are selected
-        setSelectedValues([]);
-        setData([]);
-      } else {
-        // Select all if not all are selected
-        setSelectedValues(listData);
-        setData(listData);
-      }
-    } else {
-      const isAlreadySelected = selectedValues.includes(ele);
-      const updatedSelectedValues = isAlreadySelected
-        ? selectedValues.filter((item) => item !== ele) // Deselect
-        : [...selectedValues, ele]; // Select
-      setSelectedValues(updatedSelectedValues);
-      setData(updatedSelectedValues);
-    }
-    // setIsDropDownVisible(false);
+    console.log("clicked", ele);
+    setSelectedValue(ele);
+    setData(ele); // Update the parent component with the selected value
+    setIsDropDownVisible(false); // Close the dropdown after selection
   }
 
   useEffect(() => {
@@ -60,11 +43,6 @@ export default function SelectComponent({
     };
   }, [containerRef, onClose]);
 
-  useEffect(() => {
-    setData(listData);
-    setSelectedValues(listData);
-  }, [listData]);
-
   return (
     <div className={styles.container} ref={containerRef}>
       <label className={styles.labelText}>{label ? label : "label"}</label>
@@ -72,16 +50,11 @@ export default function SelectComponent({
         className={styles.selectBox}
         onClick={() => setIsDropDownVisible(!isDropDownVisible)}
       >
-        <label>
-          {selectedValues.length > 0 &&
-          selectedValues.length !== listData.length
-            ? selectedValues.join(", ")
-            : defaultValue}
-        </label>
+        <label>{selectedValue || defaultValue}</label>
         <img
           style={isDropDownVisible ? { transform: "rotate(180deg)" } : {}}
           src={arrowDown}
-          alt=""
+          alt="dropdown arrow"
         />
       </div>
 
@@ -108,31 +81,12 @@ export default function SelectComponent({
         }
       >
         <div className={styles.menu}>
-          <label
-            className={styles.menuItem}
-            style={
-              selectedValues.length === listData.length
-                ? {
-                    color: "#ED3B4B",
-                    backgroundColor: "#FDE8EA",
-                    padding: isDropDownVisible ? "10px 15px" : "0px",
-                  }
-                : {}
-            }
-          >
-            <input
-              type="checkbox"
-              checked={selectedValues.length === listData.length}
-              onChange={() => handleMenuItemClick(defaultValue)}
-            />
-            {defaultValue}
-          </label>
           {listData?.map((ele) => (
             <label
               key={ele}
               className={styles.menuItem}
               style={
-                selectedValues.includes(ele)
+                selectedValue === ele
                   ? {
                       color: "#ED3B4B",
                       backgroundColor: "#FDE8EA",
@@ -140,12 +94,8 @@ export default function SelectComponent({
                     }
                   : {}
               }
+              onClick={() => handleMenuItemClick(ele)}
             >
-              <input
-                type="checkbox"
-                checked={selectedValues.includes(ele)}
-                onChange={() => handleMenuItemClick(ele)}
-              />
               {ele}
             </label>
           ))}
@@ -155,12 +105,10 @@ export default function SelectComponent({
   );
 }
 
-SelectComponent.propTypes = {
+BasicSelect.propTypes = {
   listData: PropTypes.array.isRequired,
-  defaultValue: PropTypes.any.isRequired,
-  data: PropTypes.any,
+  defaultValue: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onClose: PropTypes.func,
   setData: PropTypes.func.isRequired,
-  onSelect: PropTypes.func,
 };

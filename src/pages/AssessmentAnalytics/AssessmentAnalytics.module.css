@@ -1,5 +1,5 @@
 .container{
-    border: 1px solid;
+    /* border: 1px solid; */
     padding: 5px;
 }
 
@@ -8,4 +8,21 @@
     font-size: 1.1rem;
     font-weight: 750;
 
+}
+.overviewCard{
+        /* border: 1px solid; */
+        padding: 1.5rem 0px;
+}
+.cardSection, .tableSection{
+    /* margin-top: 1.75rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 2.1rem;
+}
+.cards{
+    /* border: 1px solid; */
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
 }
