@@ -4,7 +4,7 @@ import {  useState } from "react";
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { apiClientlogin } from "../../api/config.js";
-
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
@@ -12,6 +12,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [ password, setPassword] = useState("");
   const [ username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -30,13 +31,19 @@ const Login = () => {
 
           console.log("login response",response)
 
-          if (response.data.status){
+        if (response.data.status === 'success'){
           localStorage.setItem("userName",username)
           localStorage.setItem("firstName",response.data.first_name)
           localStorage.setItem("permission",response.data.permission)
           localStorage.setItem("force_reset_password",response.data.force_reset_password)
           localStorage.setItem("isLoggedin",true)
           
+           if(response.data.force_reset_password){
+                  navigate('/resetPassword');
+           }else{
+                  navigate('/overview');
+           }
+                
           }
 
       } catch (error) {

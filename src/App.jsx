@@ -7,6 +7,7 @@ import DealerPerformance from './pages/DealerPerformance/DealerPerformance'
 import QuestionAnalytics from './pages/QuestionAnalytics/QuestionAnalytics'
 import CategoryWiseReport from './pages/CategoryWiseReport/CategoryWiseReport'
 import Login from './pages/Login/Login';
+import ResetPassword from './pages/ResetPassword/ResetPassword'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
     <>
     <Routes>
       <Route element={<Login />} path='/login'/>
+      <Route element={<ResetPassword />} path='/resetPassword'/>
       <Route element={<Overview />} path='/overview'/>
       <Route element={<Profile />} path='/profile'/>
       <Route element={<AssessmentAnalytics />} path='/assessmentAnalytics'/>

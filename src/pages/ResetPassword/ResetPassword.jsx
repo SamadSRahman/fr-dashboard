@@ -1,17 +1,19 @@
-import styles from "./Login.module.css";
-import logoicon from "./Group 13614.png"
+
+import styles from "./Resetpassword.module.css";
+import logoicon from "../Login/Group 13614.png"
 import {  useState } from "react";
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { apiClientlogin } from "../../api/config.js";
-
-
+import { apiClientresetpassword } from "../../api/config.js";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const [ password, setPassword] = useState("");
+  const [ currentpassword, setCurrentPassword] = useState("");
+  const [ newpassword, setNewPassword] = useState("");
   const [ username, setUsername] = useState("");
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -24,19 +26,13 @@ const ResetPassword = () => {
 
     const userresetpassword = async () => {
      try {
-          const response = await apiClientlogin.get(`?username=${username}&password=${password}`, {
-        });
+          const response = await apiClientresetpassword.get(`?username=${username}&current_password=${currentpassword}&new_password=${newpassword}`, {
+           });
 
-
-          console.log("login response",response)
-
-          if (response.data.status){
-          localStorage.setItem("userName",username)
-          localStorage.setItem("firstName",response.data.first_name)
-          localStorage.setItem("permission",response.data.permission)
-          localStorage.setItem("force_reset_password",response.data.force_reset_password)
-          localStorage.setItem("isLoggedin",true)
-          
+          console.log("Reset response",response)
+          if (response.data.status === 'success'){
+               localStorage.setItem("isLoggedin",true)
+               navigate('/overview');
           }
 
       } catch (error) {
@@ -61,7 +57,7 @@ const ResetPassword = () => {
 
       <div className={styles.cardbodysection}>
          <div className={styles.cardtitle}> 
-         <h3> Login </h3>
+         <h3> Reset Password </h3>
          </div>
 
          <div className={styles.cardform}>  
@@ -81,14 +77,14 @@ const ResetPassword = () => {
          }}
        />
 
-     <TextField
+       <TextField
        required
        id="outlined-required"
        fullWidth
-       label="Password"
+       label="Current password"
        type={showPassword ? 'text' : 'password'}
-       value={password}
-       onChange={(e)=>setPassword(e.target.value)}
+       value={currentpassword}
+       onChange={(e)=>setCurrentPassword(e.target.value)}
        variant="outlined"
        InputProps={{
          endAdornment: (
@@ -109,12 +105,40 @@ const ResetPassword = () => {
        }}
      />
 
-         </div>
-      
+
+     <TextField
+       required
+       id="outlined-required"
+       fullWidth
+       label="New password"
+       type={showPassword ? 'text' : 'password'}
+       value={newpassword}
+       onChange={(e)=>setNewPassword(e.target.value)}
+       variant="outlined"
+       InputProps={{
+         endAdornment: (
+           <InputAdornment position="end">
+             <IconButton
+               aria-label={showPassword ? 'hide password' : 'show password'}
+               onClick={handleClickShowPassword}
+               onMouseDown={handleMouseDownPassword}
+               edge="end"
+             >
+               {showPassword ? <VisibilityOff /> : <Visibility />}
+             </IconButton>
+           </InputAdornment>
+         ),
+       }}
+       InputLabelProps={{
+         shrink: true, // Keeps the label shrunk if needed
+       }}
+     />
+
+       </div>
       </div>
      
        <div className={styles.cardfooter}>
-         <button className={styles.loginbtn}  onClick={ userresetpassword}> Reset password </button>
+         <button className={styles.loginbtn}  onClick={userresetpassword}> Reset password </button>
        </div>
     
      </div>

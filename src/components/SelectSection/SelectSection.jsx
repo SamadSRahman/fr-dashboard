@@ -56,7 +56,7 @@ function SelectSection({ onApply, page }) {
     <div className={styles.selectSection}>
       <div className={styles.dateSection}>
         <label htmlFor="">Date range</label>
-        <DateInputFeild setDates={setDates} />
+          <DateInputFeild setDates={setDates} />
       </div>
       <SelectComponent
         label="Region"

@@ -23,6 +23,12 @@ export const apiClientlogin = axios.create({
   },
 });
 
+export const apiClientresetpassword = axios.create({
+  baseURL: "https://toyota-lakshya-onlineassessment.in/dashboard_api/dashboard_reset_password/",
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
 
 export const apiClientWithToken = axios.create({
   baseURL: "http://139.5.190.56:17909",
