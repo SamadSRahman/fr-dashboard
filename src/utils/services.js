@@ -7,7 +7,7 @@ export function formatDateForAPI(value){
       return newDate;
 }
 
-export   const calculateColor = (percentage) => {
+export  const calculateColor = (percentage) => {
   if (percentage <= 35) {
     return "#FA6F6F"; // Red for <= 35%
   } else if (percentage <= 75) {

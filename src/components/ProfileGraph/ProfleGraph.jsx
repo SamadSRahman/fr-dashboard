@@ -20,8 +20,7 @@ function ProfileGraph({chartData}) {
         },
       };
     
-    
-    
+     
     
       let colors = chartData.map((stat) => {
         const percentage = (stat.profile_updated / stat.total_users) * 100;

@@ -72,10 +72,10 @@ function SelectSection({
   }, [location]);
 
   function handleApply() {
-    if (page === "overview") {
+    if (page === "overview" ) {
       onApply(selectedDealerCode, dealerData, selectedDepartments, dates);
     } 
-    else if (page === "assessmentAnalytics" || page === "categoryWiseReport") {
+    else if (page === "assessmentAnalytics" || page === "categoryWiseReport" || page === "dealerPerformance") {
       console.log("line 82", assessmentData, selectedAssessments);
       let selectedAssessmentsData = assessmentData.find(
         (ele) => selectedAssessments === ele.assessment_name
