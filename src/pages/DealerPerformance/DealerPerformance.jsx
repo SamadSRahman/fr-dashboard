@@ -76,8 +76,7 @@ export default function DealerPerformance() {
       "Passed attempts",
       "Pass rate in %",
     ]}
-    currentPage={1}
-    totalPages={10}
+  
     /> } 
 
    </div>
@@ -103,8 +102,7 @@ export default function DealerPerformance() {
     "Passed attempts",
     "Pass rate in %",
   ]}
-  currentPage={1}
-  totalPages={10}
+  
   /> 
 }
 
