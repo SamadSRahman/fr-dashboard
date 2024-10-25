@@ -29,8 +29,8 @@ const TableComponent = ({
             key={rowIndex}
           >
             {columns.map((column) => (
-              <td key={column.key} align="center">
-                {column.render ? column.render(row[column.key], row) : row[column.key]}{column.key.includes('rate')||column.key.includes('percent')?"%":""}
+              <td  key={column.key} align="center" >
+                {column.render ? column.render(row[column.key], row) : row[column.key] }{column.key.includes('rate')||column.key.includes('percent')?"%":""}
               </td>
             ))}
           </tr>

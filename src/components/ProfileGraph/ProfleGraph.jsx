@@ -1,6 +1,7 @@
 import { axisClasses, BarChart } from '@mui/x-charts'
 import PropTypes from 'prop-types'
 import styles from './ProfileGraph.module.css'
+import { calculateColor } from '../../utils/services';
 
 function ProfileGraph({chartData}) {
     const chartSetting = {
@@ -19,16 +20,7 @@ function ProfileGraph({chartData}) {
         },
       };
     
-      const calculateColor = (percentage) => {
-        if (percentage <= 35) {
-          return "#FA6F6F"; // Red for <= 35%
-        } else if (percentage <= 75) {
-          return "#FDCD4B"; // Yellow for <= 75%
-        } else {
-          return "#5AFD4B"; // Green for > 75%
-        }
-      };
-    
+     
     
       let colors = chartData.map((stat) => {
         const percentage = (stat.profile_updated / stat.total_users) * 100;
