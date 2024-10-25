@@ -6,7 +6,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { apiClientlogin } from "../../api/config.js";
 import { useNavigate } from "react-router-dom";
 import toyatalogo from "../../assets/logo.svg"
-
+import PropTypes from 'prop-types'
 
 const Login = () => {
 
@@ -53,7 +53,7 @@ const Login = () => {
             if(response.data.force_reset_password){
                     navigate('/resetPassword');
             }else{
-                    navigate('/overview');
+                    window.location.href = ('/overview');
             }
                   
             }
@@ -149,5 +149,7 @@ const Login = () => {
 
   )
 }
-
+Login.propTypes = {
+  setIsLogged: PropTypes.bool
+}
 export default Login;

@@ -11,7 +11,9 @@ export default function Header() {
   const navigate = useNavigate();
   function handleLogout() {
     localStorage.clear();
-    navigate("/login");
+    // navigate("/");
+    window.location.href="/"
+    setIsDropDownVisible(false)
   }
   useEffect(() => {
     function handleClickOutside(event) {
@@ -45,7 +47,7 @@ export default function Header() {
       </div>
 
       <div
-        style={isDropDownVisible ? {} : { height: "0px", padding: "0px" }}
+        style={isDropDownVisible ? {} : { height: "0px", padding: "0px 10px" }}
         className={styles.dropDownContainer}
       >
         <button className={styles.logoutBtn} onClick={handleLogout}>

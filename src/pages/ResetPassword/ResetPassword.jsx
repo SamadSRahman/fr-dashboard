@@ -5,8 +5,7 @@ import { useState } from "react";
 import { TextField, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { apiClientresetpassword } from "../../api/config.js";
-import { useNavigate } from "react-router-dom";
-
+import PropTypes from 'prop-types'
 
 const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,7 +13,7 @@ const ResetPassword = () => {
   const [newpassword, setNewPassword] = useState("");
   const [username, setUsername] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+ 
 
   // Updated regex to allow alphanumeric usernames with underscores
   const usernameRegex = /^[a-zA-Z0-9_]{4,30}$/;
@@ -47,7 +46,9 @@ const ResetPassword = () => {
 
       if (response.data.status === "success") {
         localStorage.setItem("isLoggedin", true);
-        navigate("/overview");
+        // setIsLogged(true)
+        // navigate("/overview");
+        window.location.href = "/overview";
       } else {
         setError(response.data.error || "Error resetting password.");
       }
@@ -159,5 +160,7 @@ const ResetPassword = () => {
     </div>
   );
 };
-
+ResetPassword.propTypes = {
+  setIsLogged: PropTypes.bool
+}
 export default ResetPassword;

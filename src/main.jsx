@@ -6,17 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import 'rsuite/dist/rsuite.min.css';  // or 'rsuite/styles/index.less';
 import { CustomProvider } from 'rsuite';
+// import { useState } from "react";
 
 const isLoggedin = localStorage.getItem("isLoggedin");
 
 createRoot(document.getElementById("root")).render(
- 
+  
   <CustomProvider >
     <BrowserRouter>
     {isLoggedin ? <div className="main-container">
       <Sidebar/>
         <Header />
-        <App />
+        <App  />
       </div>
       :
         <App/>

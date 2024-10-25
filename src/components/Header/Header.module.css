@@ -53,7 +53,7 @@
   /* min-width: 12rem; */
   overflow-y: hidden;
   /* max-height: 50vh; */
-  z-index: 2;
+  z-index: 15000;
 
 }
 .logoutBtn{

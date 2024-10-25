@@ -10,7 +10,7 @@ import Login from './pages/Login/Login';
 import ResetPassword from './pages/ResetPassword/ResetPassword'
 // import UserPerformance from './pages/UserPerformance/UserPerformance'
 import UserDetails from './pages/UserDetails/UserDetails'
-
+import PropTypes from 'prop-types'
 function App() {
 
 
@@ -31,5 +31,10 @@ function App() {
     </>
   )
 }
+
+App.propTypes = {
+  setIsLogged: PropTypes.bool
+}
+
 
 export default App
