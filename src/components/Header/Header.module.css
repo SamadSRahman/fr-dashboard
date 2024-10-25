@@ -41,3 +41,32 @@
 .nameSpan {
   width: max-content;
 }
+
+.dropDownContainer{
+  background-color: white;
+  border-radius: 10px;
+  position: absolute;
+  top: 2.5rem;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.178);
+  padding: 10px 10px;
+  transition: max-height 0.3s linear, padding 0.3s linear;
+  /* min-width: 12rem; */
+  overflow-y: hidden;
+  /* max-height: 50vh; */
+  z-index: 2;
+
+}
+.logoutBtn{
+padding:8px 10px;
+border-radius: 6px;
+color: #ED3B4B;
+background-color: white;
+border: 1px solid;
+font-size: 12px;
+display: flex;
+align-items: center;
+gap: 5px;
+}
+.logoutBtn img{
+  width: 12px;
+}

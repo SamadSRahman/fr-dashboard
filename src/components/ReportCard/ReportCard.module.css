@@ -31,14 +31,16 @@
   letter-spacing: 0.2px;
 }
 .contentWrapper h3 {
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   line-height: 20px;
-
+  font-size: 1.2rem;
   display: inline !important;
+  letter-spacing: 0.3px;
 }
 .contentWrapper p {
   font-size: 12px;
   color: #4c4c4c;
+  letter-spacing: 0.3px;
 }
 .btnWrapper button{
     background-color: black;

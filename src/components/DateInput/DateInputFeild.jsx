@@ -25,7 +25,13 @@ const DateInputFeild = ({setDates}) => {
         defaultValue={[new Date(), new Date()]}
         defaultCalendarValue={[new Date(), new Date()]}
         style={{
+          width:'15rem',
+          backgroundColor:'white',
+          boxShadow:'2px 2px 12px 0px rgba(191, 191, 191, 0.3)',
+          border:'0.604px solid #e6e6e664',
+          borderRadius:'8px'
         }}
+        
       />
     </div>
   );

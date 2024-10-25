@@ -1,0 +1,67 @@
+.container{
+
+    padding: 5px;
+}
+
+.container > h3{
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.backIcon{
+    width: 20px;
+}
+.detailsSection{
+    border-radius: 8px;
+    border: 1px solid #e6e6e68d;
+    background: #fff;
+    box-shadow: 2px 2px 12px 0px rgba(184, 184, 184, 0.2);
+    /* height: 6rem; */
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 18px 20px;
+    flex-wrap: wrap;
+    width: 97%;
+    box-sizing: border-box;
+    gap: 2rem;
+}
+.detailItem{
+    display: flex;
+    flex-direction: column;
+    width: 8rem;
+    gap: 8px;
+
+}
+.detailItem label{
+    font-size: 10px;
+   color: #4C4C4C;
+   letter-spacing: 0.3px;
+}
+.detailItem span{
+    letter-spacing: 0.3px;
+    font-weight: bold;
+    font-size: 12px;
+    width: fit-content;
+    padding: 4px 5px 2px 5px;
+    border-radius: 3px;
+}
+.reportCardWrapper{
+    width: 97%;
+    margin: 2rem 0;
+}
+.tableSection{
+    display: flex;
+    width: 98%;
+    margin: 20px 0px;
+    gap: 2rem;
+}
+.tableWrapper{
+    width: 100%;
+}
+.tableWrapper h3{
+    font-size: 1.2rem;
+}
