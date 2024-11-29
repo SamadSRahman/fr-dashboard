@@ -43,7 +43,6 @@ export default function DealerPerformance() {
       isDepartment
       isAssessment
       isDate
-    
       onApply={( selectedDealersCode,
         dealerData,
         selectedDepartments,
